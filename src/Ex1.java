@@ -25,7 +25,7 @@ public class Ex1 {
         return power(n, k - 1) * n;
     }
 
-    public static boolean StIsNumber(String num)
+    public static boolean StIsNumber(String num)                 //הפונקציה בודקת האם המחרוזת הנתונה היא מספר
     {
         boolean isNum = true;
         for(int i = 0; i< num.length(); i++)
@@ -58,9 +58,9 @@ public class Ex1 {
 
     public static int number2Int(String num) {
         int ans = -1;
-        //if (!isNumber(num)) {
-          //  return ans;
-       // }
+        if (!isNumber(num)) {
+            return ans;
+        }
         if(StIsNumber(num))
         {
             return Integer.parseInt(num);
@@ -106,6 +106,10 @@ public class Ex1 {
         nums = splitNum(a);
         String snumber = nums[0];
         String sbase = nums[1];
+        if(StIsNumber(a))                       //אם המחרוזת היא מספר דצימלי בפני עצמו, המחרוזת תקינה
+        {
+            return ans;
+        }
         char[] numbers = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G'};
         boolean c = false;
         for (int i = 0; i < snumber.length(); i++)                                  //לולאה  שבודקת האם יש במספר הנתון תו שלא קיים במערך ובהתאם לכך מכניסה ערך אמת או שקר לc
@@ -120,15 +124,30 @@ public class Ex1 {
                 break;
             }
         }
-        if (a.isEmpty() || a.indexOf("b") == -1 || sbase == snumber || Integer.parseInt(nums[1]) > 10 || a.contains(" ") || !c || a.contains("bb"))
-            ans = false;
-        else {
-            for (int j = 0; j < numbers.length; j++) {                             //לולאה  שבודקת האם הבסיס הנתון הוא תו שקיים במערך, אם לא מכניסה לans שקר
-                if (sbase.charAt(0) != numbers[j] && j == (numbers.length - 1)) {
-                    ans = false;
-                }
+        for(int j =0; j<snumber.length(); j++) {                        // הלולאה בודקת האם המספר גדול או שווה לבסיס ואם כן מכניסה שקר לans
+            if (!(Character.getNumericValue(snumber.charAt(j)) <= sbase.charAt(0)))
+            {
+                ans = false;
+                break;
             }
         }
+        if(StIsNumber(snumber))
+        {
+            if(Integer.parseInt(snumber)>Integer.parseInt(sbase))
+                ans = false;
+        }
+        else
+        {
+            if (a.isEmpty() || a.indexOf("b") == -1 || sbase == snumber || Integer.parseInt(nums[1]) > 10 || a.contains(" ") || !c || a.contains("bb")) {
+                ans = false;
+            }
+            else
+            {
+                if(!goodBase(sbase))
+                    ans = false;
+            }
+        }
+
         return ans;
 
     }
