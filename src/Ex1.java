@@ -14,36 +14,34 @@ public class Ex1 {
         /**
          * Convert the given number (num) to a decimal representation (as int).
          * It the given number is not in a valid format returns -1.
-         * @param num a String representing a number in basis [2,16]
+         * @param "num" a String representing a number in basis [2,16]
          * @return
          */
 
-        public static int power(int n, int k)
-        {
-            if(k==0)
+        public static int power(int n, int k) {
+            if (k == 0)
                 return 1;
-            return power(n, k-1)*n;
+            return power(n, k - 1) * n;
         }
 
-
-        public static int leToNum(char num)
-        {
-            int add = 10;
-            char[] nums = {'A', 'B', 'C', 'D', 'E', 'F', 'G'};
-
-                for (int j = 0; j < nums.length; j++)
-                {
-                    if (num == nums[j])
-                    {
-                        add = add + j;
-                        break;
-                    }
-                }
-            return add;
-        }
-
-    public static String[] splitNum(String num)
+    public static int leToNum(char num)
     {
+        int add = 10;
+        char[] nums = {'A', 'B', 'C', 'D', 'E', 'F', 'G'};
+
+        for (int j = 0; j < nums.length; j++) {
+            if (num == nums[j])
+            {
+                add = add + j;
+                break;
+            }
+            //if(j==nums.length-1)
+             //   add = Char
+        }
+        return add;
+        }
+
+    public static String[] splitNum(String num) {
         String[] nums = num.split("b");
         return nums;
     }
@@ -52,7 +50,8 @@ public class Ex1 {
         int ans = -1;
         if (!isNumber(num)) {
             return ans;
-        }
+       }
+       // if(num.)
         ans = 0;
         String[] nums = splitNum(num);
         String snumber = nums[0];
@@ -89,27 +88,80 @@ public class Ex1 {
             }
         return ans;
     }
-        /**
+
+    public static boolean StIsNumber(String num)
+    {
+        boolean isNum = true;
+        for(int i = 0; i< num.length(); i++)
+        {
+            if(!Character.isDigit(num.charAt(i))) {
+                isNum = false;
+                break;
+            }
+        }
+        return isNum;
+    }
+
+    /**
          * This static function checks if the given String (g) is in a valid "number" format.
          * @param a a String representing a number
          * @return true iff the given String is in a number format
          */
 
 
-    public static boolean isNumber(String a)
-    {
+        public static boolean isNumber(String a)
+        {
             boolean ans = true;
             String[] nums = new String[2];
             nums = splitNum(a);
             String snumber = nums[0];
             String sbase = nums[1];
-            //char[] numbers = {'0','1','2','3','4','5','6','7','8','9','A', 'B', 'C', 'D', 'E', 'F', 'G'};
-            if (snumber.isEmpty() || sbase.isEmpty() || a.isEmpty() || a.indexOf("b") == -1 || sbase==snumber || Integer.parseInt(nums[1])>10 || a.indexOf(" ")!=1 || )
+            char[] numbers = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G'};
+            boolean c = false;
+            for (int i = 0; i < snumber.length(); i++)                                  //לולאה  שבודקת האם יש במספר הנתון תו שלא קיים במערך ובהתאם לכך מכניסה ערך אמת או שקר לc
+            {
+                for (int j = 0; j < numbers.length; j++) {
+                    if (snumber.charAt(i) == numbers[j]) {
+                        c = true;
+                        break;
+                    }
+                }
+                if (!c) {
+                    break;
+                }
+            }
+            if (a.isEmpty() || a.indexOf("b") == -1 || sbase == snumber || Integer.parseInt(nums[1]) > 10 || a.contains(" ") || !c || a.contains("bb") )
                 ans = false;
+            else {
+                for (int j = 0; j < numbers.length; j++) {                             //לולאה  שבודקת האם הבסיס הנתון הוא תו שקיים במערך, אם לא מכניסה לans שקר
+                    if (sbase.charAt(0) != numbers[j] && j == (numbers.length - 1)) {
+                        ans = false;
+                    }
+                }
+            }
             return ans;
 
         }
 
+    public static boolean goodBase(String base)                                    //פונקציה שמקבלת מחרוזת ומחזירה אמת אם המחרוזת יכולה להיות בסיס, אחרת מחזירה שקר
+    {
+        boolean ans = true;
+        char[] numbers = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G'};
+        if (base.length() != 1) {
+            return false;
+        } else {
+            if (base == "0" || base == "1" || base == null) {
+                return false;
+            } else {
+                for (int j = 0; j < numbers.length; j++) {                             //לולאה  שבודקת האם הבסיס הנתון הוא תו שקיים במערך, אם לא מכניסה לans שקר
+                    if (base.charAt(0) != numbers[j] && j == (numbers.length - 1)) {
+                        ans = false;
+                    }
+                }
+            }
+            return ans;
+        }
+    }
         /**
          * Calculate the number representation (in basis base)
          * of the given natural number (represented as an integer).
@@ -119,11 +171,14 @@ public class Ex1 {
          * @return a String representing a number (in base) equals to num, or an empty String (in case of wrong input).
          */
         public static String int2Number(int num, int base) {
-
             String ans = "";
-            // add your code here
+           if(num<0 || base<2 || base>16)
+           {
+               ans = "";
+           }
+           else {
 
-            ////////////////////
+           }
             return ans;
         }
 
@@ -135,9 +190,9 @@ public class Ex1 {
          */
         public static boolean equals(String n1, String n2) {
             boolean ans = true;
-            // add your code here
 
-            ////////////////////
+
+
             return ans;
         }
 
