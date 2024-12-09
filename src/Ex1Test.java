@@ -44,9 +44,15 @@ public class Ex1Test {
         }
 
         @Test
+        void number2Int(){
+            String s2 = "1011b2";
+            int v = Ex1.number2Int(s2);
+            assertEquals(v,11);
+        }
+        @Test
         void StIsNumberTest(){
-            assertTrue(Ex1.StIsNumber("12345"));
-            assertFalse(Ex1.StIsNumber("1234A5"));
+           assertTrue(Ex1.StIsNumber("12345"));
+           assertFalse(Ex1.StIsNumber("1234A5"));
         }
 
         // Add additional test functions - test as much as you can.
