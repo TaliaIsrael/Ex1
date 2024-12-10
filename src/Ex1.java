@@ -100,16 +100,16 @@ public class Ex1 {
 
     public static boolean isNumber(String a) {
         boolean ans = true;
+        if (StIsNumber(a))                       //אם המחרוזת היא רק מספר דצימלי בפני עצמו, המחרוזת תקינה
+        {
+            return ans;
+        }
         String[] nums = splitNum(a);
         if(nums.length != 2) {
             return false; // המחרוזת אינה חוקית אם אין בדיוק שני חלקים
         }
         String snumber = nums[0];
         String sbase = nums[1];
-        if (StIsNumber(a))                       //אם המחרוזת היא רק מספר דצימלי בפני עצמו, המחרוזת תקינה
-        {
-            return ans;
-        }
         char[] numbers = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G'};
         boolean c = false;
         for (int i = 0; i < snumber.length(); i++)                                  //לולאה  שבודקת האם יש במספר הנתון תו שלא קיים במערך ובהתאם לכך מכניסה ערך אמת או שקר לc
@@ -132,7 +132,7 @@ public class Ex1 {
                     ans = false;
                 } else {
                     for (int j = 0; j < snumber.length(); j++) {                        // הלולאה בודקת האם המספר מכיל תו ששווה לבסיס ואם כן מכניסה שקר לans
-                        if (snumber.charAt(j) == sbase.charAt(0)) {
+                        if (snumber.charAt(j) == sbase.charAt(0) || snumber.charAt(j) > sbase.charAt(0)) {
                             ans = false;
                             break;
                         }
@@ -176,11 +176,7 @@ public class Ex1 {
      */
     public static String int2Number(int num, int base) {
         String ans = "";
-        if (num < 0 || base < 2 || base > 16) {
-            ans = "";
-        } else {
 
-        }
         return ans;
     }
 
