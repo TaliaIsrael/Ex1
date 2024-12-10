@@ -28,9 +28,8 @@ public class Ex1 {
     public static boolean StIsNumber(String num)                 //הפונקציה בודקת האם המחרוזת הנתונה היא מספר
     {
         boolean isNum = true;
-        for(int i = 0; i< num.length(); i++)
-        {
-            if(!Character.isDigit(num.charAt(i))) {
+        for (int i = 0; i < num.length(); i++) {
+            if (!Character.isDigit(num.charAt(i))) {
                 isNum = false;
                 break;
             }
@@ -61,8 +60,7 @@ public class Ex1 {
         if (!isNumber(num)) {
             return ans;
         }
-        if(StIsNumber(num))
-        {
+        if (StIsNumber(num)) {
             return Integer.parseInt(num);
         }
         ans = 0;
@@ -102,11 +100,13 @@ public class Ex1 {
 
     public static boolean isNumber(String a) {
         boolean ans = true;
-        String[] nums = new String[2];
-        nums = splitNum(a);
+        String[] nums = splitNum(a);
+        if(nums.length != 2) {
+            return false; // המחרוזת אינה חוקית אם אין בדיוק שני חלקים
+        }
         String snumber = nums[0];
         String sbase = nums[1];
-        if(StIsNumber(a))                       //אם המחרוזת היא מספר דצימלי בפני עצמו, המחרוזת תקינה
+        if (StIsNumber(a))                       //אם המחרוזת היא רק מספר דצימלי בפני עצמו, המחרוזת תקינה
         {
             return ans;
         }
@@ -121,33 +121,24 @@ public class Ex1 {
                 }
             }
             if (!c) {
+                ans = c;
                 break;
             }
         }
-        for(int j =0; j<snumber.length(); j++) {                        // הלולאה בודקת האם המספר גדול או שווה לבסיס ואם כן מכניסה שקר לans
-            if (!(Character.getNumericValue(snumber.charAt(j)) <= sbase.charAt(0)))
-            {
+            if (a == null || a.isEmpty() || !a.contains("b") || a.contains(" ") || a.startsWith("b") || a.endsWith("b") || a.contains("bb")) {
                 ans = false;
-                break;
-            }
-        }
-        if(StIsNumber(snumber))
-        {
-            if(Integer.parseInt(snumber)>Integer.parseInt(sbase))
-                ans = false;
-        }
-        else
-        {
-            if (a.isEmpty() || a.indexOf("b") == -1 || sbase == snumber || Integer.parseInt(nums[1]) > 10 || a.contains(" ") || !c || a.contains("bb")) {
-                ans = false;
-            }
-            else
-            {
-                if(!goodBase(sbase))
+            } else {
+                if (!goodBase(sbase)) {
                     ans = false;
+                } else {
+                    for (int j = 0; j < snumber.length(); j++) {                        // הלולאה בודקת האם המספר מכיל תו ששווה לבסיס ואם כן מכניסה שקר לans
+                        if (snumber.charAt(j) == sbase.charAt(0)) {
+                            ans = false;
+                            break;
+                        }
+                    }
+                }
             }
-        }
-
         return ans;
 
     }
@@ -163,9 +154,11 @@ public class Ex1 {
                 return false;
             } else {
                 for (int j = 0; j < numbers.length; j++) {                             //לולאה  שבודקת האם הבסיס הנתון הוא תו שקיים במערך, אם לא מכניסה לans שקר
-                    if (base.charAt(0) != numbers[j] && j == (numbers.length - 1)) {
-                        ans = false;
+                    if (base.charAt(0) == numbers[j]) {
+                        break;
                     }
+                    if(j == (numbers.length - 1))
+                        ans = false;
                 }
             }
             return ans;
@@ -200,7 +193,10 @@ public class Ex1 {
      */
     public static boolean equals(String n1, String n2) {
         boolean ans = true;
-
+        int num1 = number2Int(n1);
+        int num2 = number2Int(n2);
+        if(num1!=num2)
+            ans = false;
 
         return ans;
     }
