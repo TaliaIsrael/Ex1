@@ -56,7 +56,14 @@ public class Ex1Test {
         }
         @Test
     void  isNumber(){
-            assertTrue(Ex1.isNumber("1011bA"));
+            assertFalse(Ex1.isNumber("3b1"));
+        }
+
+        @Test
+    void MaxIndex(){
+            String[] nums = {"11b2", "1"};
+            int k = Ex1.maxIndex(nums);
+            assertEquals(k, 0);
         }
 
         // Add additional test functions - test as much as you can.
