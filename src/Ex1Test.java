@@ -33,21 +33,11 @@ public class Ex1Test {
                 assertFalse(not_ok);
             }
         }
-
-        @Test
-        void int2NumberTest() {
-           // implement this test
-        }
-        @Test
-        void maxIndexTest() {
-            // implement this test
-        }
-
         @Test
         void number2Int(){
-            String s2 = "101";
+            String s2 = "1011b2";
             int v = Ex1.number2Int(s2);
-            assertEquals(v,101);
+            assertEquals(v,11);
         }
         @Test
         void StIsNumberTest(){
@@ -60,10 +50,17 @@ public class Ex1Test {
         }
 
         @Test
-    void MaxIndex(){
+    void maxIndexTest(){
             String[] nums = {"11b2", "1"};
             int k = Ex1.maxIndex(nums);
             assertEquals(k, 0);
+        }
+        @Test
+    void int2NumberTest(){
+            int num = 5;
+            int base = 2;
+            String v = Ex1.int2Number(num, base);
+            assertEquals(v, "101");
         }
 
         // Add additional test functions - test as much as you can.
