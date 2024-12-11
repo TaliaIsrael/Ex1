@@ -46,7 +46,7 @@ public class Ex1Test {
         }
         @Test
         void  isNumber(){
-            assertFalse(Ex1.isNumber("3b1"));
+            assertTrue(Ex1.isNumber("10b5"));
         }
 
         @Test
@@ -57,10 +57,10 @@ public class Ex1Test {
         }
         @Test
         void int2NumberTest(){
-            int num = 5;
-            int base = 2;
+            int num = 10;
+            int base = 16;
             String v = Ex1.int2Number(num, base);
-            assertEquals(v, "101b2");
+            assertEquals(v, "AbG");
         }
 
         // Add additional test functions - test as much as you can.

@@ -181,7 +181,7 @@ public class Ex1 {
         if (num < 0 || base < 2 || base > 16) {
             return ans;
         }
-        char[] goodsChars = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+        char[] goodsChars = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G'};
         if (num == 0) {
             return "0";
         }
@@ -190,8 +190,9 @@ public class Ex1 {
             ans = goodsChars[rest] + ans;
             num = num / base;
         }
-
-        if (base != 10) {
+        if (base > 9) {
+            ans = ans + "b" + goodsChars[base];
+        } else {
             ans = ans + "b" + base;
         }
 
