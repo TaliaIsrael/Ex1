@@ -45,22 +45,22 @@ public class Ex1Test {
            assertFalse(Ex1.StIsNumber("1234A5"));
         }
         @Test
-    void  isNumber(){
+        void  isNumber(){
             assertFalse(Ex1.isNumber("3b1"));
         }
 
         @Test
-    void maxIndexTest(){
+         void maxIndexTest(){
             String[] nums = {"11b2", "1"};
             int k = Ex1.maxIndex(nums);
             assertEquals(k, 0);
         }
         @Test
-    void int2NumberTest(){
+        void int2NumberTest(){
             int num = 5;
             int base = 2;
             String v = Ex1.int2Number(num, base);
-            assertEquals(v, "101");
+            assertEquals(v, "101b2");
         }
 
         // Add additional test functions - test as much as you can.
