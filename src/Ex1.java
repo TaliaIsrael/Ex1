@@ -11,6 +11,8 @@
  * You should implement the following static functions:
  */
 public class Ex1 {
+
+
     /**
      * Convert the given number (num) to a decimal representation (as int).
      * It the given number is not in a valid format returns -1.
@@ -18,7 +20,6 @@ public class Ex1 {
      * @param "num" a String representing a number in basis [2,16]
      * @return
      */
-
     public static int power(int n, int k) {
         if (k == 0)
             return 1;
@@ -58,6 +59,7 @@ public class Ex1 {
     public static int number2Int(String num) {
         int ans = -1;
         if (!isNumber(num)) {
+            ans = Integer.parseInt(num);
             return ans;
         }
         if (StIsNumber(num)) {
@@ -105,7 +107,7 @@ public class Ex1 {
             return ans;
         }
         String[] nums = splitNum(a);
-        if(nums.length != 2) {
+        if (nums.length != 2) {
             return false; // המחרוזת אינה חוקית אם אין בדיוק שני חלקים
         }
         String snumber = nums[0];
@@ -125,25 +127,25 @@ public class Ex1 {
                 break;
             }
         }
-            if (a == null || a.isEmpty() || !a.contains("b") || a.contains(" ") || a.startsWith("b") || a.endsWith("b") || a.contains("bb")) {
+        if (a == null || a.isEmpty() || !a.contains("b") || a.contains(" ") || a.startsWith("b") || a.endsWith("b") || a.contains("bb")) {
+            ans = false;
+        } else {
+            if (!goodBase(sbase)) {
                 ans = false;
             } else {
-                if (!goodBase(sbase)) {
-                    ans = false;
-                } else {
-                    for (int j = 0; j < snumber.length(); j++) {                        // הלולאה בודקת האם המספר מכיל תו ששווה לבסיס ואם כן מכניסה שקר לans
-                        if (snumber.charAt(j) == sbase.charAt(0) || snumber.charAt(j) > sbase.charAt(0)) {
-                            ans = false;
-                            break;
-                        }
+                for (int j = 0; j < snumber.length(); j++) {                        // הלולאה בודקת האם המספר מכיל תו ששווה לבסיס ואם כן מכניסה שקר לans
+                    if (snumber.charAt(j) == sbase.charAt(0) || snumber.charAt(j) > sbase.charAt(0)) {
+                        ans = false;
+                        break;
                     }
                 }
             }
+        }
         return ans;
 
     }
 
-    public static boolean goodBase(String base)                                    //פונקציה שמקבלת מחרוזת ומחזירה אמת אם המחרוזת יכולה להיות בסיס, אחרת מחזירה שקר
+    public static boolean goodBase(String base)                              //פונקציה שמקבלת מחרוזת ומחזירה אמת אם המחרוזת יכולה להיות בסיס, אחרת מחזירה שקר
     {
         boolean ans = true;
         char[] numbers = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G'};
@@ -157,7 +159,7 @@ public class Ex1 {
                     if (base.charAt(0) == numbers[j]) {
                         break;
                     }
-                    if(j == (numbers.length - 1))
+                    if (j == (numbers.length - 1))
                         ans = false;
                 }
             }
@@ -176,6 +178,22 @@ public class Ex1 {
      */
     public static String int2Number(int num, int base) {
         String ans = "";
+        if (num < 0 || base < 2 || base > 16) {
+            return ans;
+        }
+        char[] goodsChars = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+        if (num == 0) {
+            return "0";
+        }
+        while (num > 0) {
+            int rest = num % base;
+            ans = goodsChars[rest] + ans;
+            num = num / base;
+        }
+
+        if (base != 10) {
+            ans = ans + "b" + base;
+        }
 
         return ans;
     }
@@ -191,7 +209,7 @@ public class Ex1 {
         boolean ans = true;
         int num1 = number2Int(n1);
         int num2 = number2Int(n2);
-        if(num1!=num2)
+        if (num1 != num2)
             ans = false;
 
         return ans;
@@ -207,9 +225,17 @@ public class Ex1 {
      */
     public static int maxIndex(String[] arr) {
         int ans = 0;
-        // add your code here
+        int maxNum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (isNumber(arr[i])) {
+                if (number2Int(arr[i]) > maxNum) {
+                    ans = i;
+                    maxNum = number2Int(arr[i]);
+                }
 
-        ////////////////////
+            }
+        }
+
         return ans;
     }
 }
