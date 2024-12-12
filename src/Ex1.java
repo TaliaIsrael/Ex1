@@ -187,6 +187,9 @@ public class Ex1 {
             ans = goodsChars[rest] + ans;
             num = num / base;
         }
+        if(base==10){
+            return ans;
+        }
         if (base > 9) {
             ans = ans + "b" + goodsChars[base];
         } else {
