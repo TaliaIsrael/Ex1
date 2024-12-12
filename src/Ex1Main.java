@@ -9,19 +9,24 @@ public class Ex1Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String num1 = "", num2 = "", quit = "quit";
-        while (!num1.equals(quit) && !num2.equals(quit)) {
+        while (!num1.equals("quit") && !num2.equals("quit")) {
             System.out.println();
             System.out.println("Ex1 class solution:");
             System.out.println("Enter a string as number#1 (or \"quit\" to end the program): ");
-            if (num1 != "quit") {
-                num1 = sc.next();
+
+            num1 = sc.next();
+            if (!num1.equals("quit"))
+            {
                 int number1 = Ex1.number2Int(num1);
                 boolean answer1 = Ex1.isNumber(num1);
-                if (answer1) {
+                if (answer1)
+                {
                     System.out.println("num1= " + num1 + " is number :" + answer1 + ", value: " + number1);
                     System.out.println("Enter a string as number#2 (or \"quit\" to end the program): ");
-                    if (num2 != "quit") {
-                        num2 = sc.next();
+
+                    num2 = sc.next();
+                    if (!num2.equals("quit")) {
+
                         int number2 = Ex1.number2Int(num2);
                         boolean answer2 = Ex1.isNumber(num2);
                         if(answer2)
@@ -45,13 +50,13 @@ public class Ex1Main {
                             }
                         }
                         else {
-                            System.out.println("num2= " + num2 + " is number :" + answer2 + ", value: -1");
+                            System.out.println("num2= " + num2 + " is number:" + answer2 + " , value: -1");
                             System.out.println("ERR: num2 is in the wrong format! (" + num2 +")");
                         }
                     }
                 }
                 else{
-                    System.out.println("num1= " + num1 + " is number :" + answer1 + ", value: -1");
+                    System.out.println("num1= " + num1 + " is number:" + answer1 + " , value: -1");
                     System.out.println("ERR: num1 is in the wrong format! (" + num1 +")");
                 }
 

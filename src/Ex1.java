@@ -12,21 +12,13 @@
  */
 public class Ex1 {
 
-
-    /**
-     * Convert the given number (num) to a decimal representation (as int).
-     * It the given number is not in a valid format returns -1.
-     *
-     * @param "num" a String representing a number in basis [2,16]
-     * @return
-     */
-    public static int power(int n, int k) {
+    public static int power(int n, int k) {                       //A pow function that accepts a number of type int.
         if (k == 0)
             return 1;
         return power(n, k - 1) * n;
     }
 
-    public static boolean StIsNumber(String num)                 //הפונקציה בודקת האם המחרוזת הנתונה היא מספר
+    public static boolean StIsNumber(String num)                 //The function checks if the given string is just a number
     {
         boolean isNum = true;
         for (int i = 0; i < num.length(); i++) {
@@ -38,7 +30,7 @@ public class Ex1 {
         return isNum;
     }
 
-    public static int leToNum(char num) {
+    public static int leToNum(char num) {               //accepts a character representing a hexadecimal number greater than 9 and returns its corresponding decimal value, based on its position in the array of hexadecimal characters.
         int add = 10;
         char[] nums = {'A', 'B', 'C', 'D', 'E', 'F', 'G'};
 
@@ -51,18 +43,24 @@ public class Ex1 {
         return add;
     }
 
-    public static String[] splitNum(String num) {
+    public static String[] splitNum(String num) {      //The function splitNum divides a string representing a number into several parts according to the appearance of the letter 'b' and returns an array of the strings.
         String[] nums = num.split("b");
         return nums;
     }
 
+    /**
+     * Convert the given number (num) to a decimal representation (as int).
+     * It the given number is not in a valid format returns -1.
+     * @param num a String representing a number in basis [2,16]
+     * @return
+     */
+
     public static int number2Int(String num) {
         int ans = -1;
         if (!isNumber(num)) {
-            ans = Integer.parseInt(num);
             return ans;
         }
-        if (StIsNumber(num)) {
+        if (StIsNumber(num)) {                  // If the string is just a decimal number, the string is valid and returned as a integer number.
             return Integer.parseInt(num);
         }
         ans = 0;
@@ -94,29 +92,28 @@ public class Ex1 {
 
     /**
      * This static function checks if the given String (g) is in a valid "number" format.
-     *
-     * @param a a String representing a number
+     * @param a String representing a number
      * @return true iff the given String is in a number format
      */
-
-
     public static boolean isNumber(String a) {
         boolean ans = true;
-        if (StIsNumber(a))                       //אם המחרוזת היא רק מספר דצימלי בפני עצמו, המחרוזת תקינה
+        if (StIsNumber(a))
         {
             return ans;
         }
         String[] nums = splitNum(a);
         if (nums.length != 2) {
-            return false; // המחרוזת אינה חוקית אם אין בדיוק שני חלקים
+            return false;                                           // The string is not valid if it does not have exactly two parts.
         }
         String snumber = nums[0];
         String sbase = nums[1];
         char[] numbers = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G'};
         boolean c = false;
-        for (int i = 0; i < snumber.length(); i++)                                  //לולאה  שבודקת האם יש במספר הנתון תו שלא קיים במערך ובהתאם לכך מכניסה ערך אמת או שקר לc
+        for (int i = 0; i < snumber.length(); i++)                           // A loop that checks if the given number contains a character not present in the array,
+                                                                            // and accordingly assigns a true or false value to `c`.
+                                                                            // Additionally, the number must not contain the letter 'G', so the loop runs up to 'F'.
         {
-            for (int j = 0; j < numbers.length; j++) {
+            for (int j = 0; j < numbers.length-1; j++) {
                 if (snumber.charAt(i) == numbers[j]) {
                     c = true;
                     break;
@@ -133,7 +130,7 @@ public class Ex1 {
             if (!goodBase(sbase)) {
                 ans = false;
             } else {
-                for (int j = 0; j < snumber.length(); j++) {                        // הלולאה בודקת האם המספר מכיל תו ששווה לבסיס ואם כן מכניסה שקר לans
+                for (int j = 0; j < snumber.length(); j++) {                        // The loop checks if the number contains a character that is equal to the base and if it does, it puts a false into ans
                     if (snumber.charAt(j) == sbase.charAt(0) || snumber.charAt(j) > sbase.charAt(0)) {
                         ans = false;
                         break;
@@ -145,7 +142,7 @@ public class Ex1 {
 
     }
 
-    public static boolean goodBase(String base)                              //פונקציה שמקבלת מחרוזת ומחזירה אמת אם המחרוזת יכולה להיות בסיס, אחרת מחזירה שקר
+    public static boolean goodBase(String base)                              //A function that accepts a string and returns true if the string can be a base, otherwise returns false
     {
         boolean ans = true;
         char[] numbers = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G'};
@@ -155,7 +152,7 @@ public class Ex1 {
             if (base == "0" || base == "1" || base == null) {
                 return false;
             } else {
-                for (int j = 0; j < numbers.length; j++) {                             //לולאה  שבודקת האם הבסיס הנתון הוא תו שקיים במערך, אם לא מכניסה לans שקר
+                for (int j = 0; j < numbers.length; j++) {                      //A loop that checks whether the given base is a character that exists in the array, if not, puts a false into ans
                     if (base.charAt(0) == numbers[j]) {
                         break;
                     }
