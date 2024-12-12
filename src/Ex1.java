@@ -12,13 +12,13 @@
  */
 public class Ex1 {
 
-    public static int power(int n, int k) {                       //A pow function that accepts a number of type int.
+    public static int power(int n, int k) {                 //A pow function that accepts a number of type int.
         if (k == 0)
             return 1;
         return power(n, k - 1) * n;
     }
 
-    public static boolean StIsJustNumber(String num)                 //The function checks if the given string is just a number
+    public static boolean StIsJustNumber(String num)         //The function checks if the given string is just a number
     {
         boolean isNum = true;
         for (int i = 0; i < num.length(); i++) {
@@ -30,7 +30,7 @@ public class Ex1 {
         return isNum;
     }
 
-    public static int leToNum(char num) {               //accepts a character representing a hexadecimal number greater than 9 and returns its corresponding decimal value, based on its position in the array of hexadecimal characters.
+    public static int leToNum(char num) {          //accepts a character representing a hexadecimal number greater than 9 and returns its corresponding decimal value, based on its position in the array of hexadecimal characters.
         int add = 10;
         char[] nums = {'A', 'B', 'C', 'D', 'E', 'F', 'G'};
 
@@ -60,7 +60,7 @@ public class Ex1 {
         if (!isNumber(num)) {
             return ans;
         }
-        if (StIsJustNumber(num)) {                  // If the string is just a decimal number, the string is valid and returned as a integer number.
+        if (StIsJustNumber(num)) {              // If the string is just a decimal number, the string is valid and returned as a integer number.
             return Integer.parseInt(num);
         }
         ans = 0;
@@ -97,13 +97,13 @@ public class Ex1 {
      */
     public static boolean isNumber(String a) {
         boolean ans = true;
-        if (StIsJustNumber(a))
+        if (StIsJustNumber(a))                              //If the String is just number, its valid number
         {
             return ans;
         }
         String[] nums = splitNum(a);
         if (nums.length != 2) {
-            return false;                                           // The string is not valid if it does not have exactly two parts.
+            return false;                                           //If the string is not just number, the string is not valid if it does not have exactly two parts(before and after the b).
         }
         String snumber = nums[0];
         String sbase = nums[1];
