@@ -38,8 +38,8 @@ public class Ex1Main {
                             {
                                 String plus = Ex1.int2Number((number1 + number2), base);
                                 String multi = Ex1.int2Number((number1 * number2), base);
-                                System.out.println(num1 + " + " + num2 + "= " + plus);
-                                System.out.println(num1 + " * " + num2 + "= " + multi);
+                                System.out.println(num1 + " + " + num2 + " = " + plus);
+                                System.out.println(num1 + " * " + num2 + " = " + multi);
                                 String[] numbers = {num1, num2, plus, multi};
                                 int indexMax = Ex1.maxIndex(numbers);
                                 String max = numbers[indexMax];

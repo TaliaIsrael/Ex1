@@ -180,7 +180,7 @@ public class Ex1 {
         }
         char[] goodsChars = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G'};
         if (num == 0) {
-            return "0b"+ base;
+            ans="0";
         }
         while (num > 0) {
             int rest = num % base;
