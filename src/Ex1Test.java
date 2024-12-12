@@ -44,8 +44,8 @@ public class Ex1Test {
 
     @Test
     void StIsNumberTest() {
-        assertTrue(Ex1.StIsNumber("12345"));
-        assertFalse(Ex1.StIsNumber("1234A5"));
+        assertTrue(Ex1.StIsJustNumber("12345"));
+        assertFalse(Ex1.StIsJustNumber("1234A5"));
     }
 
     @Test

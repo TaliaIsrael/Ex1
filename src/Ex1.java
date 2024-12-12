@@ -18,7 +18,7 @@ public class Ex1 {
         return power(n, k - 1) * n;
     }
 
-    public static boolean StIsNumber(String num)                 //The function checks if the given string is just a number
+    public static boolean StIsJustNumber(String num)                 //The function checks if the given string is just a number
     {
         boolean isNum = true;
         for (int i = 0; i < num.length(); i++) {
@@ -60,7 +60,7 @@ public class Ex1 {
         if (!isNumber(num)) {
             return ans;
         }
-        if (StIsNumber(num)) {                  // If the string is just a decimal number, the string is valid and returned as a integer number.
+        if (StIsJustNumber(num)) {                  // If the string is just a decimal number, the string is valid and returned as a integer number.
             return Integer.parseInt(num);
         }
         ans = 0;
@@ -97,7 +97,7 @@ public class Ex1 {
      */
     public static boolean isNumber(String a) {
         boolean ans = true;
-        if (StIsNumber(a))
+        if (StIsJustNumber(a))
         {
             return ans;
         }
